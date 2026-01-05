@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_PRINT_SCREEN,
         KC_NO,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                              KC_HOME, KC_PGUP, KC_UP,   KC_PGDN, KC_NO,   KC_NO,
         KC_NO,   KC_F6,   KC_LALT, KC_LSFT, KC_LCTL, KC_F7,                              KC_END,  KC_LEFT, KC_DOWN, KC_RIGHT,KC_INS,  KC_NO,
-        KC_NO,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,                             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,                             KC_NO,   SELWBAK, SELLINE, SELWORD, KC_NO,   KC_NO,
                                                             KC_NO,  KC_NO,   KC_NO,           KC_NO,  KC_NO,  KC_NO
     ),
     // 3
@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_ESC,  KC_GRV,  KC_ASTR, KC_LT,   KC_GT,   KC_UNDS,                            KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR,  KC_NO,   KC_NO,
         KC_NO,   KC_EXLM, KC_DQT,  LT(NAV, KC_SLSH),   LT(NAV, KC_EQL),   KC_PLUS,       KC_HASH, KC_LPRN, KC_RPRN, KC_MINS, KC_AMPR, KC_NO,
         KC_NO,   KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,                            KC_AT,   KC_SLSH, KC_PIPE, KC_BSLS, KC_NO,   KC_NO,
-                                                            KC_NO,  KC_NO,   KC_NO,           KC_NO,  KC_NO,  KC_NO
+                                                            USRNAME,  KC_NO,   KC_NO,           KC_NO,  KC_NO,  KC_NO
     ),
     // 5
     [WIN] = LAYOUT(
@@ -151,7 +151,7 @@ combo_t key_combos[] = {
 // Tap-hold configuration (https://docs.qmk.fm/tap_hold)
 ///////////////////////////////////////////////////////////////////////////////
 
-int16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     // Use lower tapping term for HRM shift keys and the LT NAV key
     switch (keycode) {
         case HRM_D:
