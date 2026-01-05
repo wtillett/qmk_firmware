@@ -129,13 +129,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Combos (https://docs.qmk.fm/features/combo)
 ///////////////////////////////////////////////////////////////////////////////
 
-const uint16_t PROGMEM caps_lock_combo[]  = {KC_B, KC_N, COMBO_END};
-const uint16_t PROGMEM caps_word_combo[]  = {HRM_V, HRM_M, COMBO_END};
-const uint16_t PROGMEM copy_combo[]  = {KC_X, KC_C, COMBO_END};
-const uint16_t PROGMEM cut_combo[]  = {KC_X, HRM_V, COMBO_END};
-const uint16_t PROGMEM paste_combo[]  = {KC_C, HRM_V, COMBO_END};
-const uint16_t PROGMEM game_combo[]  = {KC_GRV, KC_BSLS, COMBO_END};
-const uint16_t PROGMEM comm_dot_combo[]  = {KC_COMM, HRM_DOT, COMBO_END};
+const uint16_t PROGMEM caps_lock_combo[] = {KC_B, KC_N, COMBO_END};
+const uint16_t PROGMEM caps_word_combo[] = {HRM_V, HRM_M, COMBO_END};
+const uint16_t PROGMEM copy_combo[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM cut_combo[] = {KC_X, HRM_V, COMBO_END};
+const uint16_t PROGMEM paste_combo[] = {KC_C, HRM_V, COMBO_END};
+const uint16_t PROGMEM game_combo[] = {KC_GRV, KC_BSLS, COMBO_END};
+const uint16_t PROGMEM comm_dot_combo[] = {KC_COMM, HRM_DOT, COMBO_END};
+const uint16_t PROGMEM m_comma_combo[] = {HRM_M, KC_COMM, COMBO_END};
+const uint16_t PROGMEM sturdy_combo[] = {KC_Q, KC_W, KC_E, KC_R, KC_U, KC_I, KC_O, KC_P, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(caps_lock_combo, KC_CAPS),
@@ -144,7 +146,9 @@ combo_t key_combos[] = {
     COMBO(cut_combo, LCTL(KC_X)),
     COMBO(paste_combo, LCTL(KC_V)),
     COMBO(game_combo, TG(GAME)),
-    COMBO(comm_dot_combo, KC_SEMICOLON)
+    COMBO(comm_dot_combo, KC_SEMICOLON),
+    COMBO(m_comma_combo, KC_QUOT),
+    COMBO(sturdy_combo, TG(STURDY))
 };
 
 ///////////////////////////////////////////////////////////////////////////////
