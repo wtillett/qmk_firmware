@@ -138,7 +138,7 @@ const uint16_t PROGMEM game_combo[]  = {KC_GRV, KC_BSLS, COMBO_END};
 const uint16_t PROGMEM comm_dot_combo[]  = {KC_COMM, HRM_DOT, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(caps_lock_combo, CL_TOGG),
+    COMBO(caps_lock_combo, KC_CAPS),
     COMBO(caps_word_combo, CW_TOGG),
     COMBO(copy_combo, LCTL(KC_C)),
     COMBO(cut_combo, LCTL(KC_X)),
