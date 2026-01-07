@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     // 3
     [NUM] = LAYOUT(
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   QK_LAYER_LOCK,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC,
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_PLUS,   KC_7,   KC_8,   KC_9,   KC_ASTR,   KC_NO,
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_COMM,   KC_4,   KC_5,   KC_6,   KC_SLSH,   KC_NO,
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_MINS,   KC_1,   KC_2,   KC_3,   KC_ENT,   KC_NO,
@@ -102,7 +102,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // 4
     [SYM] = LAYOUT(
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_ESC,  KC_GRV,  KC_ASTR, KC_LT,   KC_GT,   KC_UNDS,                            KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR,  KC_NO,   KC_NO,
+        KC_ESC,  KC_GRV,  KC_ASTR, KC_LT,   KC_GT,   KC_UNDS,                            KC_DLR, KC_LCBR, KC_RCBR, KC_CIRC,  KC_NO,   KC_NO,
         KC_NO,   KC_EXLM, KC_DQT,  LT(NAV, KC_SLSH),   LT(NAV, KC_EQL),   KC_PLUS,       KC_HASH, KC_LPRN, KC_RPRN, KC_MINS, KC_AMPR, KC_NO,
         KC_NO,   KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,                            KC_AT,   KC_SLSH, KC_PIPE, KC_BSLS, KC_NO,   KC_NO,
                                                             USRNAME,  KC_NO,   KC_NO,           KC_NO,  KC_NO,  KC_NO
@@ -138,6 +138,7 @@ const uint16_t PROGMEM game_combo[] = {KC_GRV, KC_BSLS, COMBO_END};
 const uint16_t PROGMEM comm_dot_combo[] = {KC_COMM, HRM_DOT, COMBO_END};
 const uint16_t PROGMEM m_comma_combo[] = {HRM_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM sturdy_combo[] = {KC_Q, KC_W, KC_E, KC_R, KC_U, KC_I, KC_O, KC_P, COMBO_END};
+const uint16_t PROGMEM num_combo[] = {HRM_M,   KC_COMM, HRM_DOT, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(caps_lock_combo, KC_CAPS),
@@ -148,7 +149,8 @@ combo_t key_combos[] = {
     COMBO(game_combo, TG(GAME)),
     COMBO(comm_dot_combo, KC_SEMICOLON),
     COMBO(m_comma_combo, KC_QUOT),
-    COMBO(sturdy_combo, TG(STURDY))
+    COMBO(sturdy_combo, TG(STURDY)),
+    COMBO(num_combo, TG(NUM)),
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -164,7 +166,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case HRM_SE:
             return TAPPING_TERM - 45;
         case LT(NAV, KC_DEL):
-            return TAPPING_TERM - 100;
+            return TAPPING_TERM - 75;
         default:
             return TAPPING_TERM;
     }
@@ -391,6 +393,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             case USRNAME:
                 SEND_STRING_DELAY("wtillett", TAP_CODE_DELAY);
+                return false;
             case M_THE:     MAGIC_STRING("the", KC_N); break;
             case M_ION:     MAGIC_STRING(/*i*/"on", KC_S); break;
             case M_MENT:    MAGIC_STRING(/*m*/"ent", KC_S); break;
