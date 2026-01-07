@@ -5,7 +5,7 @@
 
 enum layers {
     BASE,
-    STURDY,
+    CANARY,
     NAV,
     NUM,
     SYM,
@@ -45,25 +45,27 @@ enum keycode_aliases {
     HRM_J = LT(WIN, KC_J),
     HRM_K = RSFT_T(KC_K),
     HRM_L = LT(SYM, KC_L),
-    HRM_SC = RALT_T(KC_SCLN),
+    HRM_SCLN = RALT_T(KC_SCLN),
     HRM_SLSH = RGUI_T(KC_SLSH),
     HRM_DOT = LT(WIN, KC_DOT),
     HRM_M = RCTL_T(KC_M),
 
-    // Sturdy QRMs
-    HRM_SS = LALT_T(KC_S),
-    HRM_ST= LT(SYM, KC_T),
-    HRM_SR = LSFT_T(KC_R),
-    HRM_SD = LT(NUM, KC_D),
-    HRM_SX = LGUI_T(KC_X),
-    HRM_SG = LCTL_T(KC_G),
+    // CANARY QRMs
+    HRM_CC = LALT_T(KC_C),
+    HRM_CR= LT(SYM, KC_R),
+    HRM_CS = LSFT_T(KC_S),
+    HRM_CT = LT(NUM, KC_T),
+    HRM_CQ = LGUI_T(KC_Q),
+    HRM_CD = LCTL_T(KC_D),
 
 
-    HRM_SN = LT(WIN, KC_N),
-    HRM_SE = RSFT_T(KC_E),
-    HRM_SA = LT(SYM, KC_A),
-    HRM_SI = RALT_T(KC_I),
-    HRM_SH = RCTL_T(KC_H)
+    HRM_CN = LT(WIN, KC_N),
+    HRM_CE = RSFT_T(KC_E),
+    HRM_CI = LT(SYM, KC_I),
+    HRM_CA = RALT_T(KC_A),
+    HRM_CDOT = RGUI_T(KC_DOT),
+    HRM_CCOMM = LT(WIN, KC_COMM),
+    HRM_CH = RCTL_T(KC_H),
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -71,16 +73,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [BASE] = LAYOUT(
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC,
         KC_GRV,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
-        KC_BSPC, HRM_A,   HRM_S,   HRM_D,   HRM_F,   KC_G,                               KC_H,    HRM_J,   HRM_K,   HRM_L,   HRM_SC,  KC_QUOT,
-        KC_LCTL, HRM_Z,   KC_X,    KC_C,    HRM_V,   KC_B,                               KC_N,    HRM_M,   KC_COMM, HRM_DOT, HRM_SLSH, MAGIC,
+        KC_BSPC, HRM_A,   HRM_S,   HRM_D,   HRM_F,   KC_G,                               KC_H,    HRM_J,   HRM_K,   HRM_L,   HRM_SCLN,  KC_QUOT,
+        TD(TD_LPRN_LCBR), HRM_Z,   KC_X,    KC_C,    HRM_V,   KC_B,                               KC_N,    HRM_M,   TD(TD_COMM_SCLN), HRM_DOT, HRM_SLSH, TD(TD_RPRN_RCBR),
                                     LT(NAV, KC_BSPC),  LT(WIN, KC_TAB),   QK_REP,           LT(SYM, KC_SPC),  LT(NAV, KC_ENT),  LT(NAV, KC_DEL)
     ),
     // 1
-    [STURDY] = LAYOUT(
+    [CANARY] = LAYOUT(
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC,
-        KC_GRV,  KC_V,    KC_M,    KC_L,    KC_C,    KC_P,                               KC_B,    MAGIC,   KC_U,    KC_O,    KC_Q,    KC_BSLS,
-        KC_BSPC, HRM_SS,  HRM_ST,  HRM_SR,  HRM_SD,  KC_Y,                               KC_F,    HRM_SN,  HRM_SE,  HRM_SA,  HRM_SI,  KC_QUOT,
-        KC_LCTL, HRM_SX,  KC_K,    KC_J,    HRM_SG,   KC_W,                              KC_Z,    HRM_SH,  KC_COMM, HRM_DOT, HRM_SLSH, MAGIC,
+        KC_GRV,  KC_W,    KC_L,    KC_Y,    KC_P,    KC_B,                               KC_Z,    KC_F,   KC_O,    KC_U,    KC_QUOT,    KC_BSLS,
+        KC_BSPC, HRM_CC,  HRM_CR,  HRM_CS,  HRM_CT,  KC_G,                               KC_M,    HRM_CN,  HRM_CE,  HRM_CI,  HRM_CA,  KC_SCLN,
+        KC_LCTL, HRM_CQ,  KC_J,    KC_V,    HRM_CD,   KC_K,                              KC_X,    HRM_CH,  TD(TD_SLSH_SCLN), HRM_CCOMM, HRM_CDOT, MAGIC,
                                     LT(NAV, KC_BSPC),  LT(WIN, KC_TAB),   QK_REP,           LT(SYM, KC_SPC),  LT(NAV, KC_ENT),  LT(NAV, KC_DEL)
     ),
     // 2
@@ -93,10 +95,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     // 3
     [NUM] = LAYOUT(
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BSPC,
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_PLUS,   KC_7,   KC_8,   KC_9,   KC_ASTR,   KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_PLUS,   KC_7,   KC_8,   KC_9,   KC_ASTR,   KC_BSPC,
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_COMM,   KC_4,   KC_5,   KC_6,   KC_SLSH,   KC_NO,
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_MINS,   KC_1,   KC_2,   KC_3,   KC_ENT,   KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_MINS,   KC_1,   KC_2,   KC_3,   KC_SLSH,   KC_ENT,
                                                             KC_NO,  KC_NO,   KC_ENT,           KC_TAB,  KC_0,  KC_DOT
     ),
     // 4
@@ -126,30 +128,50 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 ///////////////////////////////////////////////////////////////////////////////
+// Tap Dance (https://docs.qmk.fm/features/tap_dance)
+///////////////////////////////////////////////////////////////////////////////
+
+enum {
+    TD_LPRN_LCBR,
+    TD_RPRN_RCBR,
+    TD_COMM_SCLN,
+    TD_SLSH_SCLN,
+};
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_LPRN_LCBR] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_LCBR),
+    [TD_RPRN_RCBR] = ACTION_TAP_DANCE_DOUBLE(KC_RPRN, KC_RCBR),
+    [TD_COMM_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_SCLN),
+    [TD_SLSH_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_SCLN),
+};
+
+///////////////////////////////////////////////////////////////////////////////
 // Combos (https://docs.qmk.fm/features/combo)
 ///////////////////////////////////////////////////////////////////////////////
 
 const uint16_t PROGMEM caps_lock_combo[] = {KC_B, KC_N, COMBO_END};
 const uint16_t PROGMEM caps_word_combo[] = {HRM_V, HRM_M, COMBO_END};
+const uint16_t PROGMEM esc_combo[] = {KC_GRV, KC_Q, COMBO_END};
 const uint16_t PROGMEM copy_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM cut_combo[] = {KC_X, HRM_V, COMBO_END};
 const uint16_t PROGMEM paste_combo[] = {KC_C, HRM_V, COMBO_END};
 const uint16_t PROGMEM game_combo[] = {KC_GRV, KC_BSLS, COMBO_END};
 const uint16_t PROGMEM comm_dot_combo[] = {KC_COMM, HRM_DOT, COMBO_END};
 const uint16_t PROGMEM m_comma_combo[] = {HRM_M, KC_COMM, COMBO_END};
-const uint16_t PROGMEM sturdy_combo[] = {KC_Q, KC_W, KC_E, KC_R, KC_U, KC_I, KC_O, KC_P, COMBO_END};
-const uint16_t PROGMEM num_combo[] = {HRM_M,   KC_COMM, HRM_DOT, COMBO_END};
+const uint16_t PROGMEM canary_combo[] = {KC_Q, KC_W, KC_E, KC_R, KC_U, KC_I, KC_O, KC_P, COMBO_END};
+const uint16_t PROGMEM num_combo[] = {HRM_M, KC_COMM, HRM_DOT, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(caps_lock_combo, KC_CAPS),
     COMBO(caps_word_combo, CW_TOGG),
+    COMBO(esc_combo, KC_ESC),
     COMBO(copy_combo, LCTL(KC_C)),
     COMBO(cut_combo, LCTL(KC_X)),
     COMBO(paste_combo, LCTL(KC_V)),
     COMBO(game_combo, TG(GAME)),
     COMBO(comm_dot_combo, KC_SEMICOLON),
     COMBO(m_comma_combo, KC_QUOT),
-    COMBO(sturdy_combo, TG(STURDY)),
+    COMBO(canary_combo, TG(CANARY)),
     COMBO(num_combo, TG(NUM)),
 };
 
@@ -162,8 +184,8 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HRM_D:
         case HRM_K:
-        case HRM_SR:
-        case HRM_SE:
+        case HRM_CS:
+        case HRM_CE:
             return TAPPING_TERM - 45;
         case LT(NAV, KC_DEL):
             return TAPPING_TERM - 75;
@@ -186,24 +208,26 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record,
             case HRM_J:
             case HRM_K:
             case HRM_L:
-            case HRM_SC:
+            case HRM_SCLN:
             case HRM_SLSH:
             case HRM_DOT:
-            case HRM_SS:
-            case HRM_ST:
-            case HRM_SR:
-            case HRM_SD:
-            case HRM_SX:
-            case HRM_SN:
-            case HRM_SE:
-            case HRM_SA:
-            case HRM_SI:
+            case HRM_CC:
+            case HRM_CR:
+            case HRM_CS:
+            case HRM_CT:
+            case HRM_CQ:
+            case HRM_CN:
+            case HRM_CE:
+            case HRM_CI:
+            case HRM_CA:
+            case HRM_CDOT:
+            case HRM_CCOMM:
                 return FLOW_TAP_TERM;
 
             case HRM_V:
             case HRM_M:
-            case HRM_SG:
-            case HRM_SH:
+            case HRM_CD:
+            case HRM_CH:
                 return FLOW_TAP_TERM - 25;
         }
     }
