@@ -68,6 +68,24 @@ enum keycode_aliases {
     HRM_CH = RCTL_T(KC_H),
 };
 
+///////////////////////////////////////////////////////////////////////////////
+// Tap Dance (https://docs.qmk.fm/features/tap_dance)
+///////////////////////////////////////////////////////////////////////////////
+
+enum {
+    TD_LPRN_LCBR,
+    TD_RPRN_RCBR,
+    TD_COMM_SCLN,
+    TD_SLSH_SCLN,
+};
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_LPRN_LCBR] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_LCBR),
+    [TD_RPRN_RCBR] = ACTION_TAP_DANCE_DOUBLE(KC_RPRN, KC_RCBR),
+    [TD_COMM_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_SCLN),
+    [TD_SLSH_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_SCLN),
+};
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // 0
     [BASE] = LAYOUT(
@@ -105,7 +123,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [SYM] = LAYOUT(
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
         KC_ESC,  KC_GRV,  KC_ASTR, KC_LT,   KC_GT,   KC_UNDS,                            KC_DLR, KC_LCBR, KC_RCBR, KC_CIRC,  KC_NO,   KC_NO,
-        KC_NO,   KC_EXLM, KC_DQT,  LT(NAV, KC_SLSH),   LT(NAV, KC_EQL),   KC_PLUS,       KC_HASH, KC_LPRN, KC_RPRN, KC_MINS, KC_AMPR, KC_NO,
+        KC_NO,   KC_EXLM, KC_DQT,  KC_SLSH,   KC_MINS,   KC_PLUS,                        KC_HASH, KC_LPRN, KC_RPRN, KC_EQL, KC_AMPR, KC_NO,
         KC_NO,   KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC,                            KC_AT,   KC_SLSH, KC_PIPE, KC_BSLS, KC_NO,   KC_NO,
                                                             USRNAME,  KC_NO,   KC_NO,           KC_NO,  KC_NO,  KC_NO
     ),
@@ -125,24 +143,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                               KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_NO,
                                                KC_LALT,  KC_LSFT,   KC_SPC,           KC_SPC,  KC_ENT,  KC_RGUI
     )
-};
-
-///////////////////////////////////////////////////////////////////////////////
-// Tap Dance (https://docs.qmk.fm/features/tap_dance)
-///////////////////////////////////////////////////////////////////////////////
-
-enum {
-    TD_LPRN_LCBR,
-    TD_RPRN_RCBR,
-    TD_COMM_SCLN,
-    TD_SLSH_SCLN,
-};
-
-tap_dance_action_t tap_dance_actions[] = {
-    [TD_LPRN_LCBR] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_LCBR),
-    [TD_RPRN_RCBR] = ACTION_TAP_DANCE_DOUBLE(KC_RPRN, KC_RCBR),
-    [TD_COMM_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_SCLN),
-    [TD_SLSH_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_SCLN),
 };
 
 ///////////////////////////////////////////////////////////////////////////////
